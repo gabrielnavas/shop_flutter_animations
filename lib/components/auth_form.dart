@@ -27,32 +27,9 @@ class _AuthFormState extends State<AuthForm>
 
   bool _isLoading = false;
 
-  AnimationController? _controller;
-  Animation<Size>? _heighAnimation;
-
   @override
   void initState() {
     super.initState();
-    _initAnimationController();
-  }
-
-  void _initAnimationController() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        milliseconds: 300,
-      ),
-    );
-
-    _heighAnimation = Tween(
-      begin: const Size(double.infinity, 320),
-      end: const Size(double.infinity, 405),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller!,
-        curve: Curves.linear,
-      ),
-    );
   }
 
   @override
@@ -60,7 +37,6 @@ class _AuthFormState extends State<AuthForm>
     super.dispose();
     _passwordController.dispose();
     _passwordConfirmationController.dispose();
-    _controller?.dispose();
   }
 
   @override
@@ -85,17 +61,14 @@ class _AuthFormState extends State<AuthForm>
     return Card(
       elevation: 8,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: AnimatedBuilder(
-        animation: _heighAnimation!,
-        builder: (context, childForm) => Container(
-          // height: _isSignup() ? 405 : 320,
-          height: _heighAnimation?.value.height ?? (_isSignup() ? 405 : 320),
-          width: deviceSize.width * 0.75,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 10,
-          ),
-          child: childForm,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.linear,
+        height: _isSignup() ? 405 : 320,
+        width: deviceSize.width * 0.75,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 10,
         ),
         child: Form(
           key: _formKey,
@@ -242,10 +215,8 @@ class _AuthFormState extends State<AuthForm>
     setState(() {
       if (_authMode == AuthMode.signup) {
         _authMode = AuthMode.login;
-        _controller?.reverse();
       } else {
         _authMode = AuthMode.signup;
-        _controller?.forward();
       }
     });
   }
