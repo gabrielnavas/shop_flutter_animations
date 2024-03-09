@@ -1,0 +1,64 @@
+{
+  "orders": {
+    "i81Stb5LBNQ67D824d6psmNAg2z2": {
+      "-NsPhlT3rxR2RcRetzxp": {
+        "cartItems": "[{\"id\":\"-NsPJ_phL81ZbLgl4Kij\",\"productId\":\"-NsPJ_phL81ZbLgl4Kij\",\"productName\":\"3213213\",\"quantity\":1,\"productPrice\":21321321.0,\"imageUrl\":\"https://www.oitomeia.com.br/wp-content/uploads/2023/06/PR-GTM-GOL-Laranjao.jpg\"},{\"id\":\"-NsPIt3auP_wq8EcX4Wq\",\"productId\":\"-NsPIt3auP_wq8EcX4Wq\",\"productName\":\"abc\",\"quantity\":1,\"productPrice\":321.0,\"imageUrl\":\"https://www.oitomeia.com.br/wp-content/uploads/2023/06/PR-GTM-GOL-Laranjao.jpg\"}]",
+        "date": "2024-03-07T17:59:41.340099",
+        "id": "4d856996-3ab3-4e03-adbc-10b3ba512761",
+        "total": 21321642,
+        "userId": "i81Stb5LBNQ67D824d6psmNAg2z2"
+      },
+      "-NsVc3qGBYOr6rZqUKHZ": {
+        "cartItems": "[{\"id\":\"-NsFM-ZIQFxxXjkq6jHw\",\"productId\":\"-NsFM-ZIQFxxXjkq6jHw\",\"productName\":\"Keyboard\",\"quantity\":3,\"productPrice\":12.55,\"imageUrl\":\"https://i.dell.com/is/image/DellContent/content/dam/images/products/electronics-and-accessories/dell/keyboards/kb700/kb700-kbm-02-gy.psd?fmt=pjpg&pscan=auto&scl=1&wid=4859&hei=2724&qlt=100,1&resMode=sharp2&size=4859,2724&chrss=full&imwidth=5000\"},{\"id\":\"-NsPJE6y1iPfInLn6jLQ\",\"productId\":\"-NsPJE6y1iPfInLn6jLQ\",\"productName\":\"123123213\",\"quantity\":1,\"productPrice\":123213123.0,\"imageUrl\":\"https://upload.wikimedia.org/wikipedia/commons/a/a4/2019_Toyota_Corolla_Icon_Tech_VVT-i_Hybrid_1.8.jpg\"}]",
+        "date": "2024-03-08T21:32:31.345438",
+        "id": "f76035ec-167a-4cf4-963c-4015ff06d578",
+        "total": 123213160.65,
+        "userId": "i81Stb5LBNQ67D824d6psmNAg2z2"
+      }
+    }
+  },
+  "products": {
+    "-NsFLwAXboPYOCoOZL8e": {
+      "description": "A nice dog",
+      "imageUrl": "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg?w=136&h=136",
+      "name": "Dog2",
+      "price": 50
+    },
+    "-NsFM-ZIQFxxXjkq6jHw": {
+      "description": "a keyboard",
+      "imageUrl": "https://i.dell.com/is/image/DellContent/content/dam/images/products/electronics-and-accessories/dell/keyboards/kb700/kb700-kbm-02-gy.psd?fmt=pjpg&pscan=auto&scl=1&wid=4859&hei=2724&qlt=100,1&resMode=sharp2&size=4859,2724&chrss=full&imwidth=5000",
+      "name": "Keyboard",
+      "price": 12.55
+    },
+    "-NsPIt3auP_wq8EcX4Wq": {
+      "description": "abcdef123",
+      "imageUrl": "https://www.oitomeia.com.br/wp-content/uploads/2023/06/PR-GTM-GOL-Laranjao.jpg",
+      "name": "abc",
+      "price": 321
+    },
+    "-NsPJE6y1iPfInLn6jLQ": {
+      "description": "213213123",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a4/2019_Toyota_Corolla_Icon_Tech_VVT-i_Hybrid_1.8.jpg",
+      "name": "123123213",
+      "price": 123213123
+    },
+    "-NsPJ_phL81ZbLgl4Kij": {
+      "description": "213213",
+      "imageUrl": "https://www.oitomeia.com.br/wp-content/uploads/2023/06/PR-GTM-GOL-Laranjao.jpg",
+      "name": "3213213",
+      "price": 21321321
+    }
+  },
+  "userProductFavorites": {
+    "2V5j3kAR5UcCWhpmwQst7ZkUTmC3": {
+      "-NsFLwAXboPYOCoOZL8e": true,
+      "-NsFM-ZIQFxxXjkq6jHw": true,
+      "-NsPJE6y1iPfInLn6jLQ": true
+    },
+    "i81Stb5LBNQ67D824d6psmNAg2z2": {
+      "-NsFM-ZIQFxxXjkq6jHw": false,
+      "-NsPIt3auP_wq8EcX4Wq": false,
+      "-NsPJE6y1iPfInLn6jLQ": false
+    }
+  }
+}

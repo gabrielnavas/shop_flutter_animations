@@ -1,37 +1,14 @@
 # Shop Flutter App
 
 ## Before all
-- Create a firebase project.
-- Add the URI to the const String api in the lib/constants/api.dart file.
-- [ WARNING ]Change rules on project to:
-```json
-{
-  "rules": {
-    "orders": {
-      "$uid": {
-        ".write": "$uid === auth.uid",
-        ".read": "$uid === auth.uid",
-      },
-    },
-    "userProductFavorites": {
-    	"$uid": {
-      	".write": "$uid === auth.uid",
-        ".read": "$uid === auth.uid",
-      },
-    },
-    "products": {
-        ".write": "auth != null",
-        ".read": "auth != null",
-    }
-  }
-}
-```
-- In Auth page, activate the E-mail/password providers
+- Create a Firebase project.
+- Add the URI to the `const String api` in the `lib/constants/api.dart` file.
+- **[WARNING]** Update Firebase rules using [these rules.json](docs/firebase/rules.json).
+- Create a backup with the existing [data](docs/firebase/backup_data.json).
 
 # Preview
-- Implements register, login with token and logout by firebase.
-- Small shop project with a Firebase backend.
-- With state manager and data persistence on Firebase.
+- Forked from [Shop Flutter App](https://github.com/gabrielnavas/shop_flutter_auth_firebase_app) and enhanced with animations.
+- Utilizes a state manager and enables data persistence on Firebase.
 
 <br>
 
