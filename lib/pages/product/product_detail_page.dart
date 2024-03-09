@@ -15,9 +15,9 @@ class ProductDetailPage extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5), // Cor da sombra
-            spreadRadius: 5, // Raio de propagação da sombra
-            blurRadius: 15, // Raio de desfoque da sombra
+            color: Colors.black.withOpacity(0.4), // Cor da sombra
+            spreadRadius: 4, // Raio de propagação da sombra
+            blurRadius: 4, // Raio de desfoque da sombra
             offset: const Offset(
                 0, 2), // Deslocamento da sombra em relação ao ícone
           ),
@@ -108,9 +108,6 @@ class ProductDetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 2000,
-                )
               ],
             ),
           ),
