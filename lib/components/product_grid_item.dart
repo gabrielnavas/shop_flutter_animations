@@ -77,15 +77,15 @@ class ProductGridItem extends StatelessWidget {
         ),
       ),
       child: GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(
-          Routes.productDetail,
-          arguments: product,
-        ),
-        child: Image.network(
-          product.imageUrl,
-          fit: BoxFit.cover,
-        ),
-      ),
+          onTap: () => Navigator.of(context).pushNamed(
+                Routes.productDetail,
+                arguments: product,
+              ),
+          child: FadeInImage(
+            placeholder:
+                const AssetImage('assets/images/product-placeholder.png'),
+            image: NetworkImage(product.imageUrl),
+          )),
     );
 
     // clip an element, on border this case
