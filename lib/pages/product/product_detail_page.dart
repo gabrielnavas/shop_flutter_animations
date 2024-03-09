@@ -9,11 +9,36 @@ class ProductDetailPage extends StatelessWidget {
     final Product product =
         ModalRoute.of(context)!.settings.arguments as Product;
 
+    Widget customArrowPopScreen = Container(
+      margin: const EdgeInsets.all(8.0), // Ajuste conforme necessário
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.5), // Cor da sombra
+            spreadRadius: 5, // Raio de propagação da sombra
+            blurRadius: 15, // Raio de desfoque da sombra
+            offset: const Offset(
+                0, 2), // Deslocamento da sombra em relação ao ícone
+          ),
+        ],
+      ),
+      child: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+    );
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.blueAccent,
+            foregroundColor: Colors.white,
+            shadowColor: Colors.black,
+            leading: customArrowPopScreen,
             expandedHeight: 300,
             pinned: true, // fix app bar on top when scrolled
             flexibleSpace: FlexibleSpaceBar(
@@ -23,7 +48,7 @@ class ProductDetailPage extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 32,
+                  fontSize: 26,
                 ),
               ),
               background: Stack(
