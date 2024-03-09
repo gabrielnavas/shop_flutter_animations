@@ -13,7 +13,8 @@ class AuthForm extends StatefulWidget {
   State<AuthForm> createState() => _AuthFormState();
 }
 
-class _AuthFormState extends State<AuthForm> {
+class _AuthFormState extends State<AuthForm>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmationController =
       TextEditingController();
@@ -25,6 +26,40 @@ class _AuthFormState extends State<AuthForm> {
   AuthFormData authData = AuthFormData.init();
 
   bool _isLoading = false;
+
+  AnimationController? _controller;
+  Animation<Size>? _heighAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 300,
+      ),
+    );
+
+    _heighAnimation = Tween(
+      begin: const Size(double.infinity, 320),
+      end: const Size(double.infinity, 405),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.linear,
+      ),
+    );
+
+    _heighAnimation?.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _passwordController.dispose();
+    _passwordConfirmationController.dispose();
+    _controller?.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +84,8 @@ class _AuthFormState extends State<AuthForm> {
       elevation: 8,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Container(
-        height: _isSignup() ? 405 : 320,
+        // height: _isSignup() ? 405 : 320,
+        height: _heighAnimation?.value.height ?? (_isSignup() ? 405 : 320),
         width: deviceSize.width * 0.75,
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -200,8 +236,10 @@ class _AuthFormState extends State<AuthForm> {
     setState(() {
       if (_authMode == AuthMode.signup) {
         _authMode = AuthMode.login;
+        _controller?.reverse();
       } else {
         _authMode = AuthMode.signup;
+        _controller?.forward();
       }
     });
   }
