@@ -13,6 +13,7 @@ class ProductDetailPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            backgroundColor: Colors.blueAccent,
             expandedHeight: 300,
             pinned: true, // fix app bar on top when scrolled
             flexibleSpace: FlexibleSpaceBar(
@@ -20,18 +21,36 @@ class ProductDetailPage extends StatelessWidget {
               title: Text(
                 product.name,
                 style: const TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 32,
                 ),
               ),
-              background: Hero(
-                tag: product.id,
-                child: Image.network(
-                  product.imageUrl,
-                  height: 300,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Hero(
+                    tag: product.id,
+                    child: Image.network(
+                      product.imageUrl,
+                      height: 300,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment(0, 0.9),
+                        end: Alignment(0, 0),
+                        colors: [
+                          Color.fromRGBO(0, 0, 0, 0.6),
+                          Color.fromRGBO(0, 0, 0, 0.0),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -64,6 +83,9 @@ class ProductDetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 2000,
+                )
               ],
             ),
           ),
