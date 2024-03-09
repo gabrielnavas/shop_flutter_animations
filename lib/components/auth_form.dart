@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_flutter_app/exceptions/http_exception.dart';
 import 'package:shop_flutter_app/models/auth_form_data.dart';
@@ -27,9 +28,32 @@ class _AuthFormState extends State<AuthForm>
 
   bool _isLoading = false;
 
+  AnimationController? _controller;
+  Animation<double>? _opacityAnimation;
+
   @override
   void initState() {
     super.initState();
+    _initAnimationController();
+  }
+
+  void _initAnimationController() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 300,
+      ),
+    );
+
+    _opacityAnimation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.linear,
+      ),
+    );
   }
 
   @override
@@ -37,6 +61,7 @@ class _AuthFormState extends State<AuthForm>
     super.dispose();
     _passwordController.dispose();
     _passwordConfirmationController.dispose();
+    _controller?.dispose();
   }
 
   @override
@@ -101,22 +126,33 @@ class _AuthFormState extends State<AuthForm>
                   }
                 },
               ),
-              if (_isSignup())
-                TextFormField(
-                  decoration:
-                      const InputDecoration(labelText: 'Confirmar senha'),
-                  keyboardType: TextInputType.text,
-                  controller: _passwordConfirmationController,
-                  obscureText: true,
-                  validator: (value) => AuthFormData.validatePasswords(
-                      value ?? '', _passwordController.text),
-                  onChanged: (value) => _verifyForm(),
-                  onSaved: (value) {
-                    if (value != null && value.isNotEmpty) {
-                      authData.passwordConfirmation = value;
-                    }
-                  },
+              AnimatedContainer(
+                // animation height from 60 to 120 on signup
+                constraints: BoxConstraints(
+                  minHeight: _isSignup() ? 60 : 0,
+                  maxHeight: _isSignup() ? 120 : 0,
                 ),
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.linear,
+                child: FadeTransition(
+                  opacity: _opacityAnimation!,
+                  child: TextFormField(
+                    decoration:
+                        const InputDecoration(labelText: 'Confirmar senha'),
+                    keyboardType: TextInputType.text,
+                    controller: _passwordConfirmationController,
+                    obscureText: true,
+                    validator: (value) => AuthFormData.validatePasswords(
+                        value ?? '', _passwordController.text),
+                    onChanged: (value) => _verifyForm(),
+                    onSaved: (value) {
+                      if (value != null && value.isNotEmpty) {
+                        authData.passwordConfirmation = value;
+                      }
+                    },
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -215,8 +251,10 @@ class _AuthFormState extends State<AuthForm>
     setState(() {
       if (_authMode == AuthMode.signup) {
         _authMode = AuthMode.login;
+        _controller?.reverse();
       } else {
         _authMode = AuthMode.signup;
+        _controller?.forward();
       }
     });
   }
