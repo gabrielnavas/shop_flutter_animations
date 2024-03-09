@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_flutter_app/exceptions/http_exception.dart';
 import 'package:shop_flutter_app/models/product.dart';
 import 'package:shop_flutter_app/providers/product_list.dart';
-import 'package:shop_flutter_app/routes.dart';
+import 'package:shop_flutter_app/routes/routes.dart';
 
 class ProductItem extends StatefulWidget {
   final Product product;

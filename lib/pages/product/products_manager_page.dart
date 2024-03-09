@@ -4,7 +4,7 @@ import 'package:shop_flutter_app/components/app_drawer.dart';
 import 'package:shop_flutter_app/components/center_message.dart';
 import 'package:shop_flutter_app/components/product_item.dart';
 import 'package:shop_flutter_app/providers/product_list.dart';
-import 'package:shop_flutter_app/routes.dart';
+import 'package:shop_flutter_app/routes/routes.dart';
 
 class ProductsManager extends StatefulWidget {
   const ProductsManager({super.key});
