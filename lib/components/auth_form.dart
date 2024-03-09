@@ -30,6 +30,7 @@ class _AuthFormState extends State<AuthForm>
 
   AnimationController? _controller;
   Animation<double>? _opacityAnimation;
+  Animation<Offset>? _slideAnimation;
 
   @override
   void initState() {
@@ -48,6 +49,16 @@ class _AuthFormState extends State<AuthForm>
     _opacityAnimation = Tween(
       begin: 0.0,
       end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.linear,
+      ),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(-1.5, -2.5),
+      end: const Offset(0.0, 0.0),
     ).animate(
       CurvedAnimation(
         parent: _controller!,
@@ -136,20 +147,23 @@ class _AuthFormState extends State<AuthForm>
                 curve: Curves.linear,
                 child: FadeTransition(
                   opacity: _opacityAnimation!,
-                  child: TextFormField(
-                    decoration:
-                        const InputDecoration(labelText: 'Confirmar senha'),
-                    keyboardType: TextInputType.text,
-                    controller: _passwordConfirmationController,
-                    obscureText: true,
-                    validator: (value) => AuthFormData.validatePasswords(
-                        value ?? '', _passwordController.text),
-                    onChanged: (value) => _verifyForm(),
-                    onSaved: (value) {
-                      if (value != null && value.isNotEmpty) {
-                        authData.passwordConfirmation = value;
-                      }
-                    },
+                  child: SlideTransition(
+                    position: _slideAnimation!,
+                    child: TextFormField(
+                      decoration:
+                          const InputDecoration(labelText: 'Confirmar senha'),
+                      keyboardType: TextInputType.text,
+                      controller: _passwordConfirmationController,
+                      obscureText: true,
+                      validator: (value) => AuthFormData.validatePasswords(
+                          value ?? '', _passwordController.text),
+                      onChanged: (value) => _verifyForm(),
+                      onSaved: (value) {
+                        if (value != null && value.isNotEmpty) {
+                          authData.passwordConfirmation = value;
+                        }
+                      },
+                    ),
                   ),
                 ),
               ),
