@@ -33,6 +33,10 @@ class _AuthFormState extends State<AuthForm>
   @override
   void initState() {
     super.initState();
+    _initAnimationController();
+  }
+
+  void _initAnimationController() {
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(
