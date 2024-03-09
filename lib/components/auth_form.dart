@@ -137,36 +137,37 @@ class _AuthFormState extends State<AuthForm>
                   }
                 },
               ),
-              AnimatedContainer(
-                // animation height from 60 to 120 on signup
-                constraints: BoxConstraints(
-                  minHeight: _isSignup() ? 60 : 0,
-                  maxHeight: _isSignup() ? 120 : 0,
-                ),
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.linear,
-                child: FadeTransition(
-                  opacity: _opacityAnimation!,
-                  child: SlideTransition(
-                    position: _slideAnimation!,
-                    child: TextFormField(
-                      decoration:
-                          const InputDecoration(labelText: 'Confirmar senha'),
-                      keyboardType: TextInputType.text,
-                      controller: _passwordConfirmationController,
-                      obscureText: true,
-                      validator: (value) => AuthFormData.validatePasswords(
-                          value ?? '', _passwordController.text),
-                      onChanged: (value) => _verifyForm(),
-                      onSaved: (value) {
-                        if (value != null && value.isNotEmpty) {
-                          authData.passwordConfirmation = value;
-                        }
-                      },
+              if (_isSignup())
+                AnimatedContainer(
+                  // animation height from 60 to 120 on signup
+                  constraints: BoxConstraints(
+                    minHeight: _isSignup() ? 60 : 0,
+                    maxHeight: _isSignup() ? 120 : 0,
+                  ),
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.linear,
+                  child: FadeTransition(
+                    opacity: _opacityAnimation!,
+                    child: SlideTransition(
+                      position: _slideAnimation!,
+                      child: TextFormField(
+                        decoration:
+                            const InputDecoration(labelText: 'Confirmar senha'),
+                        keyboardType: TextInputType.text,
+                        controller: _passwordConfirmationController,
+                        obscureText: true,
+                        validator: (value) => AuthFormData.validatePasswords(
+                            value ?? '', _passwordController.text),
+                        onChanged: (value) => _verifyForm(),
+                        onSaved: (value) {
+                          if (value != null && value.isNotEmpty) {
+                            authData.passwordConfirmation = value;
+                          }
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
               const SizedBox(
                 height: 20,
               ),
