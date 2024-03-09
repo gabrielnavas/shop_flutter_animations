@@ -35,13 +35,14 @@
 ### Add Product
 ![Add Product](docs/screens/add_product.png "Add Product")
 
-
 ### Remove Product
 ![Remove Product](docs/screens/remove_product_shield.png "Remove Product")
 
-
 ### Update Product
 ![Update Product](docs/screens/update_product.png "Update Product")
+
+### Update Details
+![Update Details](docs/screens/product_details.png "Update Details")
 
 ### Orders
 ![Orders](docs/screens/orders.png "Orders")
